@@ -29,7 +29,7 @@ This desktop music application was developed using the following technologies:
 
 ## Preview of the Application
 
-   ![](https://github.com/guilhermevialle/Music-app/blob/main/preview/AppPreview.mov)
+   ![](https://github.com/guilhermevialle/Music-app/blob/main/preview/AppPreviewGif.gif)
 
 
 ## License
