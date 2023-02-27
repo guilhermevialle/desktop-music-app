@@ -1,4 +1,7 @@
-# Installation
+## Desktop media player app (Working...)
+The app is incomplete at the moment but i will work on adding new features
+
+## Installation
 
 To install this application on your computer, follow these steps:
 
