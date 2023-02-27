@@ -1,0 +1,35 @@
+.ContentView {
+  background-color: #1a1a26;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.65fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr 1fr 14%;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  overflow: hidden;
+  grid-template-areas:
+    'Sidebar Searchbar Searchbar Searchbar Searchbar'
+    'Sidebar Contents Contents Contents Contents'
+    'Sidebar Contents Contents Contents Contents'
+    'Sidebar Contents Contents Contents Contents'
+    'Playerbar Playerbar Playerbar Playerbar Playerbar';
+  color: white;
+  }
+.Searchbar {
+  grid-area: Searchbar;
+}
+
+.Contents {
+  grid-area: Contents;
+}
+
+.Playerbar {
+  grid-area: Playerbar;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+
+}
+
+.Sidebar {
+  grid-area: Sidebar;
+}

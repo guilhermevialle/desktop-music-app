@@ -1,0 +1,111 @@
+import { useAtom } from 'jotai';
+import { useEffect, useRef, useState } from 'react';
+import stateAtom from './../atoms/state';
+import getStringDetails from '../utils/getStringDetails';
+import filterArrayLikeVSCode from '../utils/filterArrayLikeVsCode';
+import StyledString from './StyledString';
+
+function filterTracksByInput(target: string, value: string): number[] {
+  target = target.toLowerCase().slice(0, -4);
+  value = value.toLowerCase();
+
+  const indexes: number[] = [];
+  const word: string[] = [];
+
+  for (let i = 0; i < target.length; i++) {
+    if (value.includes(target[i])) {
+      indexes.push(i);
+      word.push(target[i]);
+    }
+  }
+
+  if (indexes.length > 0 && word.join('').includes(value)) {
+    return indexes;
+  }
+  return [];
+}
+
+export default function Songlist() {
+  const [atomState, setAtomState] = useAtom(stateAtom);
+  const tracksRef = useRef<HTMLLIElement[]>([]);
+  const [ordenedTracks, setOrdenedTracks] = useState<string[]>([]);
+
+  useEffect(() => {
+    let newOrder = ordenedTracks.filter((e) => {
+      if (filterTracksByInput(e, atomState.inputQuery).length > 0) {
+        return [e.slice(), filterTracksByInput(e, atomState.inputQuery)];
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    makeTrackFocus(tracksRef.current[atomState.elementProps.index]);
+  }, [atomState]);
+
+  function makeTrackFocus(focused: HTMLElement) {
+    if (!focused) {
+      return;
+    }
+
+    document
+      .querySelectorAll('.btnFocus')
+      .forEach((element: any) => element.classList.remove('btnFocus'));
+    focused.classList.add('btnFocus');
+  }
+
+  return (
+    <div className='songlist'>
+      <h3>Playlist</h3>
+      <ul>
+        <span></span>
+        {atomState.data?.length > 0 ? (
+          atomState.data.map((e: any, index: number) => {
+            if (
+              filterTracksByInput(e.slice(0, -4), atomState.inputQuery).length >
+              0
+            ) {
+              return (
+                <li
+                  ref={(el) => (tracksRef.current[index] = el!)}
+                  key={index}
+                  onClick={(event: any) => {
+                    if (atomState.inputElement) {
+                      atomState.inputElement.value = '0';
+                    }
+
+                    setAtomState((stateAtom) => ({
+                      ...stateAtom,
+                      elementProps: {
+                        source: e,
+                        index,
+                      },
+                    }));
+                  }}
+                >
+                  <StyledString
+                    indexArr={filterTracksByInput(e, atomState.inputQuery)}
+                    str={`${getStringDetails(e)?.artist} - ${
+                      getStringDetails(e)?.title
+                    } `}
+                  />
+
+                  {atomState.elementProps.index == index ? (
+                    <div className='trackPlayingAnimation'>
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  ) : (
+                    ''
+                  )}
+                </li>
+              );
+            }
+          })
+        ) : (
+          <></>
+        )}
+      </ul>
+    </div>
+  );
+}
