@@ -30,7 +30,7 @@ This desktop music application was developed using the following technologies:
 - ReactQuery
 - Jotai
 
-## Preview of the Application
+## Preview
 
    ![](https://github.com/guilhermevialle/Music-app/blob/main/preview/AppPreviewGif.gif)
 
