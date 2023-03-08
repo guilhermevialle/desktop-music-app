@@ -18,6 +18,7 @@ To run the application on your computer, follow these steps:
 1.  Make sure you are in the root folder of the project.
 2.  Run the command `npm run build`.
 3. Start the nodejs server that transfers your music to the API using `node src/services/api`.
+4. And finally run `npm run preview` to run the app.
 
 ## Technologies Used
 
