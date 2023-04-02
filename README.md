@@ -1,5 +1,5 @@
 ## Desktop media player app (Working...)
-This app is made for personal use but feel free to use it =). Remember that it still has many bugs...
+This app was made for personal use but feel free to use it =). Remember that it still has many bugs...
 
 ## Installation
 
