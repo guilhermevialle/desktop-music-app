@@ -1,5 +1,5 @@
 ## Desktop media player app (Working...)
-The app is incomplete at the moment but i will work on adding new features
+This app is made for personal use but feel free to use it =). Remember that it still has many bugs...
 
 ## Installation
 
