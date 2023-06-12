@@ -1,5 +1,5 @@
-## Desktop media player app (Working...)
-This app was made for personal use but feel free to use it =). There are several bugs/errors that I haven't fixed.
+## MacOS Desktop Music Player
+[PERSONAL USAGE] This app get all MacBook songs from ~/Downloads and turn available to listen.
 
 ## Installation
 
